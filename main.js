@@ -1,17 +1,18 @@
 const form = document.getElementById('activityForm');
 
+/**
+ * Gets random activity by activity type.
+ */
 const getActivity = async e => {
   e.preventDefault();
-  const outputDiv = document.querySelector('#output');
-  // Get activity type value from select field
-  const activityType = form['activity-type'].value;
+  // TODO: Get activity type value from select field
 
   try {
-    // Calling: https://www.boredapi.com/
-    const response = await fetch(`https://www.boredapi.com/api/activity?type=${activityType}`);
-    const data = await response.json();
-    const { activity, participants, type} = data;
-    // Show activity info
+    // TODO: Use Fetch API to make a GET request to https://www.boredapi.com/
+
+    // TODO: Extract the activity data from the response
+
+    // TODO: Inject activity data to HTML card element using template literal
     const output = `<div class="card border border-primary my-4 lead">
          <div class="card-header bg-dark text-white">
             <strong>⚽ Activity</strong>
@@ -21,27 +22,21 @@ const getActivity = async e => {
          </div>
          <div class="card-body">
             <ul class="list-group list-group-flush">
-               <li class="list-group-item"><strong>Activity: </strong>${activity}</li>
-               <li class="list-group-item"><strong>Number of participants: </strong>${participants}</li>
-               <li class="list-group-item"><strong>Type: </strong>${type}</li>
+               <li class="list-group-item"><strong>Activity: </strong></li>
+               <li class="list-group-item"><strong>Number of participants: </strong></li>
+               <li class="list-group-item"><strong>Type: </strong></li>
             </ul>
          </div>
       </div>`;
-    // Insert into output div
-    outputDiv.innerHTML = output || '';
+    // TODO: Insert the activity card into output div
   } catch (err) {
-    outputDiv.innerHTML =
-      `<div class="alert alert-danger">
-          Error, please try again.
-        </div>`;
-    throw Error(err.statusText);
+    // TODO: handle error
   }
 };
 
-// Listen for form submit
-form.addEventListener('submit', getActivity);
+// TODO: Listen for form submit event
 
-// Delete activity box
+// TODO: Delete activity box
 const removeActivity = () => {
-  document.querySelector('.card').remove();
+
 };
