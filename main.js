@@ -1,7 +1,11 @@
+const form = document.getElementById('activityForm');
+
 const getActivity = async e => {
   e.preventDefault();
+  const outputDiv = document.querySelector('#output');
   // Get activity type value from select field
-  const activityType = document.querySelector('#activity-type').value;
+  const activityType = form['activity-type'].value;
+
   try {
     // Calling: https://www.boredapi.com/
     const response = await fetch(`https://www.boredapi.com/api/activity?type=${activityType}`);
@@ -24,9 +28,9 @@ const getActivity = async e => {
          </div>
       </div>`;
     // Insert into output div
-    document.querySelector('#output').innerHTML = output || '';
+    outputDiv.innerHTML = output || '';
   } catch (err) {
-    document.querySelector('#output').innerHTML =
+    outputDiv.innerHTML =
       `<div class="alert alert-danger">
           Error, please try again.
         </div>`;
@@ -35,7 +39,7 @@ const getActivity = async e => {
 };
 
 // Listen for form submit
-document.getElementById('activityForm').addEventListener('submit', getActivity);
+form.addEventListener('submit', getActivity);
 
 // Delete activity box
 const removeActivity = () => {
